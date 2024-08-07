@@ -1,4 +1,5 @@
-import React from 'react'
+
+
 
 const Error404Page = () => {
   return (

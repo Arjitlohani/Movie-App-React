@@ -1,0 +1,23 @@
+.login-form{
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 95vw;
+    justify-content: center;
+    height: 90vh;
+    align-items: center;
+}
+.login-form h4{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.loginForm-containeer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 320px;
+    height: 70%;
+    font-size: 1.1rem;
+
+}
