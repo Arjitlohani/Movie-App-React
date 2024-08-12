@@ -3,9 +3,7 @@ export const getItem=(key)=>{
     if(!key){
         return;
     }
-    if(!value){
-        alert('No value found ');
-    }
+
     return value;
 }
 

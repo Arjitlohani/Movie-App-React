@@ -6,6 +6,10 @@ export const axiosInstance = axios.create({
     baseURL:environmentConfig.baseURL
 });
 
+export const axiosInstance2 = axios.create({
+    imageURL:environmentConfig.imageURL
+});
+
 
 axiosInstance.defaults.headers.post['Content-Type'] = 'application/json';
 

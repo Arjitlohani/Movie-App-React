@@ -4,6 +4,7 @@ import { login } from "./services"
 import { environmentConfig } from "../../Utils/Config/environmentConfig"
 import { getUsersdetail } from "./services"
 import { setItem } from "../../Utils/Config/storageConfig"
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -13,6 +14,7 @@ const Authentication = () => {
     email: "",
     password: "",
   })
+  const navigate=useNavigate()
   const handleSubmit = async(e) => {
     e.preventDefault()
     try{
@@ -24,6 +26,7 @@ const Authentication = () => {
     console .log(detailResponse)
     setItem('isAuthenticating',true)
     setItem('userDetail',JSON.stringify(detailResponse.data))
+    navigate('/Dashboard')
     }
     catch(e){
       alert(e)
