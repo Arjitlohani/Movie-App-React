@@ -8,7 +8,7 @@ const LoginForm = ({loginInfo,setLoginInfo,handleSubmit}) => {
 
   return (
     <div className="loginForm-containeer" >
-      <form noValidate={false} >
+      <form  >
   <div className="mb-3">
     <label htmlFor="exampleInputEmail1" className="htmlm-label">Email address</label><br></br>
     <input type="email" name="email" value={loginInfo.email} onChange={handleChange}className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required={true}/>

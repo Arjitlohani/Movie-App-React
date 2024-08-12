@@ -15,3 +15,4 @@ export const logout=()=>{
     clear();
     window.location.href='/';
 }
+

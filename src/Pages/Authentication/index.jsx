@@ -26,7 +26,7 @@ const Authentication = () => {
     console .log(detailResponse)
     setItem('isAuthenticating',true)
     setItem('userDetail',JSON.stringify(detailResponse.data))
-    navigate('/Dashboard')
+    navigate('/dashboard')
     }
     catch(e){
       alert(e)

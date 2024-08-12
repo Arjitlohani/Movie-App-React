@@ -9,7 +9,7 @@ const userDetails = JSON.parse(getItem('userDetails'));
     if(!isAuthenticated && !userDetails){
         return <Outlet/>
     }
-    else return <Navigate to='/Dashboard' replace={true} />
+    else return <Navigate to='/dashboard' replace={true} />
 
 }
 

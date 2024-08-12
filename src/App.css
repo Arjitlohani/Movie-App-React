@@ -40,18 +40,26 @@
 
 
   .card {
-    width: 205px; /* Adjusted card width to fit 4 cards */
-    height: 390px;
+    width: 240px; /* Adjusted card width to fit 4 cards */
+    height: 450px;
     margin: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: center;  
     align-items: center;
     flex-direction: column;
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 10px 4px 8px 0 rgba(0,0,0,0.2);
-    
+    text-overflow:ellipsis ;
     overflow: hidden; /* Hides overflow content */
+}
+
+.card h5{
+  white-space: nowrap;
+  width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: underline;
 }
 
 .card img {
@@ -67,4 +75,8 @@
     margin: 10px;
     font-size: 30px;
     align-items: center;
+}
+.pop-movie h1{
+  text-align: center;
+
 }

@@ -1,7 +1,11 @@
 // import  { useState } from 'react';
 import { environmentConfig } from '../../Utils/Config/environmentConfig';
+import { Link } from 'react-router-dom';
 
-const Card = ({ title, posterPath, rating }) => {
+
+
+
+const Card = ({ title, posterPath, rating, id }) => {
   // const [isExpanded, setIsExpanded] = useState(false);
 
   // const toggleReadMore = () => {
@@ -9,6 +13,7 @@ const Card = ({ title, posterPath, rating }) => {
   // };
   const imageBaseUrl = environmentConfig.imageURL;
   const imageUrl = imageBaseUrl + posterPath
+
  
   // const shortOverview = overview.split(' ').slice(0, 4).join(' ') + '...';
 
@@ -24,6 +29,10 @@ const Card = ({ title, posterPath, rating }) => {
           </span>
         </p> */}
         <p id="rating">Rating:{rating}</p>
+        
+        <Link to={`/moviedetails/${id}`} className="btn btn-primary">View Details</Link>
+
+        
       </div>
     </div>
   );

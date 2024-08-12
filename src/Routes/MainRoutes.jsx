@@ -5,6 +5,8 @@ import Dashboard from '../Pages/Dashboard'
 import Error404Page from '../Components/Error/Error404Page'
 import ProtectedRoute from './ProtectedRoute'
 import OpenRoute from './OpenRoute'
+import MovieDetail from '../Pages/movieDetails'
+
 
 
 const MainRoutes = () => {
@@ -19,7 +21,9 @@ const MainRoutes = () => {
         <Route element={<OpenRoute/>}>
         <Route path='' element={<Authentication/>} />
         </Route>
-        <Route path='/Dashboard' element={<ProtectedRoute><Dashboard/></ProtectedRoute>} />
+        <Route path='/dashboard' element={<ProtectedRoute><Dashboard/></ProtectedRoute>} />
+        <Route path='/moviedetails/:id' element={<ProtectedRoute><MovieDetail/></ProtectedRoute>} />
+        
         
         <Route path='*' element={<Error404Page/>} />
     </Routes>

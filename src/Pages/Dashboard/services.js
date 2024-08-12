@@ -5,3 +5,10 @@ export const getPopularMovies = async () => {
     const data = response.data;
     return data;
 }
+
+export const getPopularMoviesDetails = async () => {
+    const response = await axiosInstance.get(`account/{account_id}`);
+    const data = response.data;
+    return data;
+
+}
