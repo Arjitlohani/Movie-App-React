@@ -28,9 +28,10 @@ const Card = ({ title, posterPath, rating, id }) => {
             {isExpanded ? ' Read less' : ' Read more'}
           </span>
         </p> */}
-        <p id="rating">Rating:{rating}</p>
+        <p id="rating">Rating:{rating}&ensp;<i className="bi bi-heart"></i></p>
         
-        <Link to={`/moviedetails/${id}`} className="btn btn-primary">View Details</Link>
+        <Link to={`/moviedetails/${id}`} className="btn btn-primary">View Details </Link>
+
 
         
       </div>
