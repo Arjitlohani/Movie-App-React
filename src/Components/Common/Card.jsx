@@ -13,6 +13,7 @@ const Card = ({ title, posterPath, rating, id }) => {
   // };
   const imageBaseUrl = environmentConfig.imageURL;
   const imageUrl = imageBaseUrl + posterPath
+  
 
  
   // const shortOverview = overview.split(' ').slice(0, 4).join(' ') + '...';
