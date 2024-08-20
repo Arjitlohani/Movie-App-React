@@ -7,7 +7,7 @@ import Navbar from "../../Components/Partials/Navbar";
 const MovieDetail = () => {
   const [movieDetails, setMovieDetails] = useState({});
   const { id } = useParams();
-  console.log(id);
+
   const getDetails = async () => {
     const details = await getMovieDetails(id);
     setMovieDetails(details);
@@ -22,36 +22,51 @@ const MovieDetail = () => {
   const background = imageBaseUrl + movieDetails.backdrop_path;
   const newdate = new Date(movieDetails.release_date);
   const year = newdate.getFullYear();
-  const [isFavourite, setIsFavourite] = useState(false)
-  const [favouriteList, setFavouriteList] = useState([])
-  const [isChangedFavourite, setIsChangedFavourite] = useState(false)
+  const [isFavourite, setIsFavourite] = useState(false);
+  const [favouriteList, setFavouriteList] = useState([]);
+  const [isChangedFavourite, setIsChangedFavourite] = useState(false);
 
-  useEffect(() => {
-    addToFavouriteHandler()
-  },[isFavourite])
 
+ 
   useEffect(() => {
-    getMyfavouriteList()
-  },[isChangedFavourite])
+    const isAready = favouriteList.every(item => item.id === Number(id));
+    if(Boolean(isAready) === false){
+    addToFavouriteHandler();
+    }
+
+    
+  }, [isFavourite]);
 
   
+
+  useEffect(() => {
+
+    getMyfavouriteList();
+
+  }, [isChangedFavourite]);
 
   const addToFavouriteHandler = async () => {
     const reqData = {
       media_id: id,
       media_type: "movie",
-      favorite: isFavourite
-    }
-   await addToFavourite(reqData)
-   setIsChangedFavourite((prevState) => !prevState)
-  }
+      favorite: isFavourite,
+    };
+    await addToFavourite(reqData);
+   
+    setIsChangedFavourite((prevState) => !prevState);
+  };
 
   const getMyfavouriteList = async () => {
-    const response = await getMyFavourite()
-    setFavouriteList(response.results)
-    console.log(response.results, '<><><><><><')
-  }
+    const response = await getMyFavourite();
+    const isAlreadyExist = await response.results.some(item =>item.id == id);
+    if(isAlreadyExist){
+      setIsFavourite(true);
+    }
+    setFavouriteList(response.results);
+    
+    console.log(response.results, "<><><><><><>");
 
+  };
 
   console.log(movieDetails);
 
@@ -81,55 +96,63 @@ const MovieDetail = () => {
             <p>{movieDetails.overview}</p>
 
             <p>Rating:{movieDetails.vote_average}</p>
-            
           </div>
         </div>
       </div>
-                <hr />
-                <div className='row movieDetailFavourite justify-content-evenly mt-3'>
-        <div className='col-4' color="black">
-            <h6>Genres</h6>
-            {
-              movieDetails?.genres?.map((item) => (
-                <span className='badge text-bg-secondary me-2 mt-2' key={item?.id}>{item?.name}</span>
-              ))
-            }
-            <i className={`bi bi-heart${isFavourite ? "-fill" : ""} ms-4 fs-2`}
-             onClick={() => setIsFavourite((prevState) => !prevState)} 
-             style={{cursor: 'pointer', color: isFavourite? 'red' : ''}}></i>
-            <br />
-            <button type="button" onClick={() => navigate(-1)}
-             className="btn btn-outline-secondary my-3"
-             
-              style={{fontSize: '0.8rem'}}><i className="bi bi-arrow-left"></i> Go Home</button>
-              
+      <hr />
+      <div className="row movieDetailFavourite justify-content-evenly mt-3">
+        <div className="col-4" color="black">
+          <h6>Genres</h6>
+          {movieDetails?.genres?.map((item) => (
+            <span className="badge text-bg-secondary me-2 mt-2" key={item?.id}>
+              {item?.name}
+            </span>
+          ))}
+          <i
+            className={`bi bi-heart${isFavourite ? "-fill" : ""} ms-4 fs-2`}
+            onClick={() => setIsFavourite((prevState) => !prevState)}
+            style={{ cursor: "pointer", color: isFavourite ? "red" : "" }}
+          ></i>
+          <br />
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="btn btn-outline-secondary my-3"
+            style={{ fontSize: "0.8rem" }}
+          >
+            <i className="bi bi-arrow-left"></i> Go Home
+          </button>
         </div>
-        
-        <div className='col-6'>
-            <h6>My favourites</h6>
-            <div className="accordion mt-3" id="accordionExample">
+
+        <div className="col-6" style={{ height: "10%", float: "right" }}>
+          <h6>My favourites</h6>
+          <div className="accordion" id="accordionExample">
             {favouriteList?.map((item) => (
-            <div className="accordion-item" key={item?.id} style={{maxHeight: '13vh'}}>
-            <h2 className="accordion-header">
-              <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              
-                <span style={{margin: "0 auto", fontSize: '0.95rem'}}>{item?.original_title}</span>
-            </button>
-            </h2>
-           <div id="collapseOne" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-            <div className="accordion-body" style={{fontSize: '0.75rem'}}>
-              {item?.overview}
-            </div>
-            </div>
-            </div>
-            ))
-}
-
-            </div>
+              <div className="accordion-item" key={item.id}>
+                <h2 className="accordion-header">
+                  <button
+                    className="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    {item?.title}
+                  </button>
+                </h2>
+                <div
+                  id="collapseOne"
+                  className="accordion-collapse collapse show"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div className="accordion-body">{item?.overview}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-
-    </div>
-
+      </div>
     </section>
   );
 };

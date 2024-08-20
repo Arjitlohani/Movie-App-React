@@ -54,8 +54,13 @@
     text-overflow:ellipsis ;
     overflow: hidden; 
 }
+.card:hover{
+  transform: scale(1.1); /* Scales the image to 110% of its original size */
+  transition: transform 0.3s ease-in-out ; /* Smoothens the scaling effect */
+}
 body{
   overflow-x: hidden;
+  
 }
 
 .hero{
