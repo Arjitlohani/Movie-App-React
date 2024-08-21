@@ -27,6 +27,7 @@ const PopularMovies = () => {
     
   return (
     <div className="pop-movie">
+ 
       <h1 id="pm">Popular Movies</h1>
       <div className="moviecard">
 
