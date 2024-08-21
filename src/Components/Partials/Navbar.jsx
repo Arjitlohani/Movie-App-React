@@ -7,7 +7,8 @@ const Navbar = () => {
   return (
     <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <a className="navbar-brand" href="#">Movie Application</a>
+  <Link className="navbar-brand" to="/dashboard"> <img src="images/launani.svg" alt="logo" style={{width:"60%", height:"100%",marginLeft:"15px"}}/></Link>
+ 
   
   <Link to="/dashboard" className="nav-link" >Dashboard</Link>
   <Link to="/favorites" className="nav-link" style={{marginLeft:"15px"}}>Favorites</Link>
