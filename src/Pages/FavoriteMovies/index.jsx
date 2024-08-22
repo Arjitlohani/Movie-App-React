@@ -1,7 +1,7 @@
 // import React from 'react'
 import { useEffect, useState } from "react"
 import {getMyFavourite} from "../movieDetails/service"
-import Navbar from "../../Components/Partials/Navbar"
+
 import Card from "../../Components/Common/Card"
 
 
@@ -20,7 +20,7 @@ const FavoriteMovies = () => {
   }
   return (
     <>
-    <Navbar/>
+    
         <div className="moviecard" >
           {favouriteList.
          map((item) => (

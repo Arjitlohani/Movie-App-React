@@ -10,9 +10,11 @@ import FavoriteMovies from '../Pages/FavoriteMovies'
 
 
 
+
 const MainRoutes = () => {
   return (
     <div style={{minHeight:'100vh' , minWidth:'100vw'}}>
+
 
     
     <Routes>
