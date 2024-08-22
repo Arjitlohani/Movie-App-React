@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { addToFavourite, getMovieDetails, getMyFavourite } from "./service";
 import { useEffect, useState } from "react";
 import { environmentConfig } from "../../Utils/Config/environmentConfig";
-import Navbar from "../../Components/Partials/Navbar";
+
 
 const MovieDetail = () => {
   const [movieDetails, setMovieDetails] = useState({});
@@ -76,7 +76,7 @@ const MovieDetail = () => {
         className="hero"
         style={{ backgroundImage: `url(${background})`, width: "100%" }}
       >
-        <Navbar />
+        
         <br />
 
         <div className="row">

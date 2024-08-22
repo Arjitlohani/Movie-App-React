@@ -1,7 +1,4 @@
 
-import Navbar from "../../Components/Partials/Navbar"
-
-
 import PopularMovies from "../PopularMovies/PopularMovies"
 
 
@@ -16,7 +13,7 @@ const Dashboard = () => {
     <div>
       
       
-      <Navbar/><br/>
+      
       <PopularMovies  />
       
         
